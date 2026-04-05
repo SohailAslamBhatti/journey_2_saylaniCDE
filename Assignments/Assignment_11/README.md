@@ -1,5 +1,5 @@
 
-![img-snowflake-loading](./img/assignment10a.jpeg)
+![img-snowflake-loading](./img/assignment10a.jpg)
 
 ### **Objective**
 
@@ -46,7 +46,7 @@ snowflake-loading-data/
 │   ├── TSLA.csv
 │   └── TSLA_modified.csv
 └── image/
-    └── assignment10a.jpeg
+    └── assignment10a.jpg
 ```
 
 ---
