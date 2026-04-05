@@ -1,6 +1,5 @@
 
-
----
+![Project](./image/Assignment_10.png)
 
 ### **Objective**
 
@@ -58,8 +57,8 @@ airflow-s3-snowflake-pipeline/
 │   └── airflow_connections.json  # Connection configs (optional)
 ├── data/
 │   └── sample_file.csv           # Sample data in S3
-├── img/
-│   └── architecture.png          # Architecture diagram
+├── image/
+│   └── Assignment_10.png          # Architecture diagram
 └── README.md
 ```
 
@@ -70,13 +69,8 @@ airflow-s3-snowflake-pipeline/
 * **pipeline_dag.py** – Defines Airflow DAG with all tasks (Sensor, Load, Notification)
 * **snowflake_queries.sql** – SQL commands for table creation and data loading
 * **airflow_connections.json** – Stores Airflow connection configurations
-* **data/** – Sample dataset used for testing
-* **img/** – Architecture diagram of pipeline
+* **dataset/** – Sample dataset used for testing
+* **image/** – Architecture diagram of pipeline
 
 ---
 
-If you want, I can also:
-
-* Add **step-by-step setup (EC2 + Airflow installation)**
-* Provide **complete DAG code**
-* Convert this into a **strong portfolio project for LinkedIn/GitHub** 👍
