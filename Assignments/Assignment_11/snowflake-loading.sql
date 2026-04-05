@@ -1,6 +1,6 @@
---===================================
--- Loading data using Web Interface
---===================================
+|====================================|
+|  Loading data using Web Interface  |
+|====================================|
 
 -- Creating a testing database
 CREATE DATABASE TEST_DB;
@@ -20,9 +20,9 @@ SELECT * FROM CUSTOMER_DETAILS;
 
 -- Now Load data into CUSTOMER_DETAILS
 
---===================================
--- Loading data using SnowCLI
---===================================
+|===============================|
+|  Loading data using SnowCLI   |
+|===============================|
 
 -- login snowsql
 snowsql
@@ -61,9 +61,9 @@ COPY INTO mycsvtable
 	pattern = '*.contain[1-5].csv.gz'
 	on_error = 'skip_file';
 
---===================================
--- Loading data using Cloud Provider
---===================================
+|=====================================|
+|  Loading data using Cloud Provider  |
+|=====================================|
 
 -- tesla table
 CREATE OR REPLACE TABLE TESLA_STOCKS(
@@ -96,10 +96,10 @@ COPY INTO TESLA_STOCKS
 -- data should be there
 SELECT * FROM TESLA_STOCKS;
 
-------------------------
--- Storage Integration
-------------------------
-
+|========================|
+|  Storage Integration   |
+|========================|
+	
 -- giving privileges
 USE ROLE ACCOUNTADMIN;
 GRANT CREATE INTEGRATION ON ACCOUNT TO SYSADMIN;
@@ -142,9 +142,9 @@ COPY INTO TESLA_STOCKS FROM @S3_INTEGRATEION_BULK_COPY_TESLA_STOCKS;
 -- data should be there
 SELECT * FROM TESLA_STOCKS;
 
---==============================
--- Loading data using Snow Pipe
---===============================
+|=================================|
+|   Loading data using Snow Pipe  |
+|=================================|
 
 -- 1. Stage the data
 -- 2. Test the copy command
@@ -211,10 +211,10 @@ SELECT * FROM TESLA_STOCKS;
 -- DROPPING PIPE
 DROP PIPE S3_TESLA_PIPE;
 
-
-----------------
--- TIME TRAVEL
-----------------
+|=================|
+|  TIME TRAVEL    |
+|=================|
+	
 SELECT * FROM TESLA_STOCKS order by DATE desc;
 
 -- dropping & getting back the table (time travel)
