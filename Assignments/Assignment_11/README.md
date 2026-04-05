@@ -1,5 +1,5 @@
 
-![Project Screenshot](./image/Assignment10.drawio.png)
+![Project](./image/assignment10.drawio.png)
 
 ### **Objective**
 
