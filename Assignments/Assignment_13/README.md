@@ -1,4 +1,4 @@
-![Project](./image/assignment13.png)
+![Project](./image/Assignment13.png)
 
 ### **Tech Stack**
 
