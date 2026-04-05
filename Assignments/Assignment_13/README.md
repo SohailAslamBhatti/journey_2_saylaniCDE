@@ -1,5 +1,11 @@
 ![Project](./image/Assignment13.png)
 
+### **Introduction**
+
+This project builds a real-time data pipeline for continuous ingestion and transformation into Snowflake. It uses cloud technologies to implement Change Data Capture (CDC) and Slowly Changing Dimensions (SCD) for managing historical data.
+
+---
+
 ### **Tech Stack**
 
 * **Languages:** Python, SQL, JavaScript
