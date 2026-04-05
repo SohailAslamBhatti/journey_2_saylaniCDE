@@ -1,5 +1,4 @@
-
-![img-snowflake-loading](./img/assignment10a.jpg)
+![Project Screenshot](./image/assignment10a.jpg)
 
 ### **Objective**
 
