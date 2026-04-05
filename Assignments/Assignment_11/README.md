@@ -46,7 +46,7 @@ snowflake-loading-data/
 │   ├── TSLA.csv
 │   └── TSLA_modified.csv
 └── image/
-    └── assignment10a.jpg
+    └── assignment10.drawio.png
 ```
 
 ---
