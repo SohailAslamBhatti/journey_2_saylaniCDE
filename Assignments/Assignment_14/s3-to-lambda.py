@@ -64,8 +64,9 @@ def lambda_handler(event, context):
         print(e)
         return {"statusCode": 500, "body": str(e)}
 
-
-# ---------------- HELPER FUNCTIONS ---------------- #
+|====================|
+|  HELPER FUNCTIONS  |
+|====================|
 
 def transform_date(date_str):
     """Convert MM/DD/YYYY → YYYY-MM-DD"""
