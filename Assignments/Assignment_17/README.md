@@ -1,4 +1,4 @@
-![Project-1](./image/asgnmt16_.png)
+![Project-17](./images/asgnmt17.png)
 
 **💱 FX Pulse — Overview**
 
