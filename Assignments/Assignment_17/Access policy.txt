@@ -1,0 +1,19 @@
+{
+ "Version": "2012-10-17",
+ "Statement":[
+  {
+   "Sid": "AllowEventBridgeToPublish",
+   "Effect": "Allow",
+   "Principal": {
+   "Service": "events.amazonaws.com"
+   },
+   "Action": "sns:Publish",
+   "Resource":"arn:aws:sns:us-east-1:333813598340:sns-to-email",
+   "Condition": {
+    "ArnEquals": {
+     "aws:SourceArn": "arn:aws:events:us-east-1:333813598340:rule/rule-to-trigger-sns"
+    }
+   }
+  }
+ ]
+}

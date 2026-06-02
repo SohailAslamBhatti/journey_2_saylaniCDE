@@ -1,0 +1,18 @@
+Cloudwatch rule for Triggering the SNS on success of Glue Job:
+---------------------------------------------------------------
+{
+  "source": [
+    "aws.glue"
+  ],
+  "detail-type": [
+    "Glue Job State Change"
+  ],
+  "detail": {
+    "jobName": [
+      "serverless-datalake-proj-slu"
+    ],
+    "state": [
+      "SUCCEEDED"
+    ]
+  }
+}

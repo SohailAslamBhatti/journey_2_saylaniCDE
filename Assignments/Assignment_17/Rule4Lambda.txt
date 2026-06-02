@@ -1,0 +1,19 @@
+Cloudwatch rule for trigger the Lambda on success of the Glue Crawler:
+------------------------------------------------------------------------
+ {
+  "source": [
+    "aws.glue"
+  ],
+  "detail-type": [
+    "Glue Crawler State Change"
+  ],
+  "detail": {
+    "state": [
+      "Succeeded"
+    ],
+    "crawlerName": [
+      "serverless-crawler-slu"
+    ]
+  }
+}
+
