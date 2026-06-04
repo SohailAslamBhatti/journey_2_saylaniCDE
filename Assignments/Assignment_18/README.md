@@ -1,19 +1,16 @@
-Here is a refined, production-ready summary of your project architecture and workflow, condensed for maximum clarity and impact:
-
 ## Project Overview:
 
 This end-to-end serverless ETL pipeline ingests, transforms, and analyzes global COVID-19 datasets, moving raw multi-source data into a high-performance data warehouse.
 
 ```
 [Raw S3 Data] ➔ [AWS Glue Crawler] ➔ [Glue Catalog] ➔ [Athena (Ad-hoc SQL)]
-                     ⬇
-              [AWS Glue ETL Job] ➔ [Transformed Parquet in S3] ➔ [Amazon Redshift]
+                         ⬇
+                 [AWS Glue ETL Job] ➔ [Transformed Parquet in S3] ➔ [Amazon Redshift]
 
 ```
 ## Project Architecture:
 
 ![Project-18](./images/Architecture1.jpeg)
-
 
 ---
 
@@ -48,5 +45,3 @@ Would you like a Python script template for the AWS Glue Spark ETL job that hand
 
 
 ---
-
-### Step 1: Data Ingestion
