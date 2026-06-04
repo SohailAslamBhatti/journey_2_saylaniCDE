@@ -41,7 +41,5 @@ To present this visually in a professional architecture diagram, group your exis
 * **Serverless Data Lake Layer:** AWS Glue (Crawlers, Catalog, Spark ETL) + Amazon Athena for ad-hoc exploration.
 * **Enterprise Serving Layer:** Amazon Redshift acting as the final, structured destination for BI tools.
 
-Would you like a Python script template for the AWS Glue Spark ETL job that handles the transformation logic, or perhaps an optimized Redshift `COPY` command example?
-
 
 ---
