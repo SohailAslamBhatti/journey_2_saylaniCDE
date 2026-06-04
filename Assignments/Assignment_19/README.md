@@ -1,10 +1,14 @@
-Here is a refined, enterprise-ready documentation template for your **Spotify Data ETL Pipeline**. It uses standard data engineering terminology, adds key architectural context (like handling data lakes and idempotency), and organizes the information into a scannable format.
+
+**Spotify Data ETL Pipeline** 
+It uses standard data engineering terminology, adds key architectural context (like handling data lakes and idempotency), and organizes the information into a scannable format.
 
 ---
 
 ## 1. Project Architecture Overview
 
 This project implements a serverless, event-driven ETL (Extract, Transform, Load) pipeline that automates the ingestion, structural normalization, and cataloging of music streaming data via the **Spotify API**.
+
+![Project-19](./images/asgnmt19.png)
 
 ```
 [CloudWatch Event] ➔ [Lambda (Extract)] ➔ [S3 Raw Bucket (JSON)]
@@ -15,7 +19,7 @@ This project implements a serverless, event-driven ETL (Extract, Transform, Load
 
 ---
 
-## 2. Refined Pipeline Workflow
+## 2. Pipeline Workflow
 
 ### 🔄 **Extract Layer (Ingestion)**
 
@@ -55,7 +59,3 @@ This project implements a serverless, event-driven ETL (Extract, Transform, Load
 * **Immediate SQL Readiness:** Eliminates time-consuming database provisioning by rendering serverless S3 data completely queryable out of the box.
 
 ---
-
-### 💡 Quick Suggestion for Your Next Iteration
-
-> **Optimization Tip:** To scale this effectively in production, consider altering the **Transform Lambda** to output data in **Apache Parquet format** instead of CSV. Parquet significantly reduces query costs and execution time in Amazon Athena because it relies on columnar data stripping and data compression.
