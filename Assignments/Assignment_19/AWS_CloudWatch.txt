@@ -1,0 +1,30 @@
+#
+# Send to AWS CloudWatch
+# Sends collected Last.fm data to AWS EventBridge / CloudWatch.
+
+def send_event_to_cloudwatch (data, detail_type=EVENT_DETAIL_TYPE): 
+	print("\n=== Sending to CloudWatch ===")
+
+	client boto3.client(
+		'events',
+		region_name=AWS_REGION, 
+		aws_access_key_id='AKIA4RK3WXFFG7RLDN4C',
+		aws_secret_access_key='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'
+	)
+
+	response = client.put_events(
+		Entries = [{
+			'Source': EVENT_SOURCE, 
+			'DetailType': detail_type, 
+			'Detail' json.dumps (data),
+			'EventBusName': 'default',
+		}]
+	)
+
+	failed = response.get('FailedEntryCount',0)
+
+	if failed == 0:
+		print("✅ Event sent to CloudWatch successfully!")
+	else:
+		print("❌ failed entries: {response['Entries']}")
+
