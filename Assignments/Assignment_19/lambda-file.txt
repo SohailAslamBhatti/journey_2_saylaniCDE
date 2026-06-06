@@ -7,7 +7,7 @@ from datetime import datetime
 s3 = boto3.client('s3')
 
 # Your S3 bucket name
-BUCKET_NAME = 's3-lambda-raw-data'
+BUCKET_NAME = 's3bucket-to-store-lastfm-data-slu'
 
 # Lambda function handler
 def lambda_handler(event, context):
