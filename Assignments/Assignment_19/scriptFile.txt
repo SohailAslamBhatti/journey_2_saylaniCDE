@@ -1,0 +1,155 @@
+import requests 
+import boto3 
+import json
+
+# Last.fm API Credentials
+API_KEY = '26068f9d615eeb4092346ba2ab39925d' 	# From last.fm/api/account/create
+USERNAME = 'xu7' 				# Your Last.fm username
+# xu7
+# AWS Config
+
+
+AWS_REGION = 'us-east-1'
+EVENT_SOURCE = 'custom.lastfm' 			#e.g. 'us-east-1'
+EVENT_DETAIL_TYPE = 'LastFM API Trigger'
+BASE_URL = "http://ws.audioscrobbler.com/2.0/"
+
+
+# Helper Function: Make API calls
+# This function sends requests to Last.fm API and returns JSON response safely.
+
+def lastfm_get(method, extra_params={}):
+	params = {
+		"method": method,
+		"user": USERNAME,
+		"api_key": API_KEY,
+		"format":"json",
+		**extra_params
+	}
+
+	response = requests.get(BASE_URL, params=params) 
+	print (f"[{method}] Status: {response.status_code}")
+
+	if response.status_code == 200 and response.text.strip():
+		return response.json()s
+	else:
+		print(f"Error: {response.text}")
+		return {}
+
+# 1. Get User Profile
+# Fetches basic user details like name, country, playcount, and registration info.
+
+def get_user_info():
+	print("\n=== Fetching User Profile ===")
+	data = lastfm_get("user.getinfo")
+
+	if 'user' in data:
+		user = data['user']
+		print (f"Username: {user.get('name')}")
+		print (f" Real Name: {user.get('realname')}")
+		print (f"Country: {user.get('country')}")
+		print (f"Total Scrobbles: {user.get('playcount')}")
+		print (f"Registered: {user.get('registered', {}).get('#text')}")
+	return data
+
+# 2. Get Recent Tracks
+# Fetches the user's most recently played tracks (listening history)."
+
+def get_recent_tracks (limit=10):
+ 	print("\n=== Fetching Last {limit} Recent Tracks ===")
+	data = lastfm_get("user.getrecenttracks", {"limit": limit})
+
+	if 'recenttracks' in data:
+		tracks = data['recenttracks'].get('track', [])
+		
+		for i, track in enumerate (tracks[:limit], 1):
+			artist track.get('artist', {}).get('#text', 'Unknown') name = track.get('name', 'Unknown')
+			album = track.get('album', {}).get('#text', 'Unknown')
+
+   			print(f"{i}. {name} - {artist} [{album}]")
+	return data
+
+#3. Get Top Tracks
+# Returns most played tracks for al selected time period.
+
+def get_top_tracks (period='overall', limit=10):
+"""
+period options:
+'7day', '1month', '3month', '6month', '12month', 'overall'
+"""
+
+print(f"\n=== Fetching Top {limit} Tracks ({period}) ===")
+data = lastfm_get("user.gettoptracks", {"period": period, "limit": limit})
+
+if 'toptracks' in data:
+	tracks = data['toptracks'].get('track', [])
+
+	for i, track in enumerate(tracks, 1):
+		name = track.get('name', 'Unknown')
+		artist = track.get('artist', {}).get('name', 'Unknown')
+		playcount track.get('playcount', 0)
+		
+		print(f"{i}. {name} (played {playcount} times)")
+
+return data
+
+===
+# 4. Get Top Artists
+# Fetches most listened artists based on play count.
+
+def get_top_artists (period='overall', limit=10):
+	print(f"\n=== Fetching Top {limit} Artists ({period}) ===")
+	data = lastfm_get("user.gettopartists", {"period": period, "limit": limit})
+
+	if 'topartists' in data:
+		artists = data['topartists'].get('artist', [])
+
+		for i, artist in enumerate(artists, 1): 
+		name artist.get('name', 'Unknown')
+		playcount = artist.get('playcount', 0)
+
+		print(f"{i}. {name} (played {playcount} times)")
+	return data
+
+# 5. Get Top Albums
+# Returns most played albums for the user.
+
+def get_top_albums (period='overall', limit=10):
+	print (f"\n=== Fetching Top (limit} Albums ({period}) ===")
+	data = lastfm_get("user.gettopalbums", {"period": period, "limit": limit})
+
+	if 'topalbums' in data:
+		albums = data['topalbums'].get('album', [])
+
+		for i, album in enumerate (albums, 1):
+			name = album.get('name', 'Unknown')
+			artist = album.get('artist', {}).get('name', 'Unknown') 
+			playcount album.get('playcount', 0)
+
+
+			print (f"{i}. {name} - {artist} (played {playcount} times)")
+	return data
+===
+# 6. Get Loved Tracks
+# Fetches tracks marked as "loved" by the user on Last.fm.
+
+def get_loved_tracks (limit=10):
+	print("\n=== Fetching Loved Tracks ===")
+	data = lastfm_get("user.getlovedtracks", {"limit": limit})
+
+	if 'lovedtracks' in data:
+	tracks = data['lovedtracks'].get('track', [])
+
+	for i, track in enumerate (tracks, 1):
+		name track.get('name', 'Unknown')
+		artist = track.get('artist', {}).get('name', 'Unknown')
+
+		print (f"{i}. {name} - {artist}")
+return data
+
+
+
+
+
+
+
